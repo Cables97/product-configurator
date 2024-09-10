@@ -25,9 +25,10 @@ let candlePath = "./src/models/Candle_wide.gltf"
 const { scene } = await useLoader(GLTFLoader, candlePath)
 
 const pbrTexture = await useTexture({
-  map: "https://raw.githubusercontent.com/Cables97/product-configurator/main/src/models/textures/apple.png",
+  map: '@/models/textures/apple2.jpg',
 })
-scene.getObjectByName('wrap').material = materialStore.matLabel
+
+scene.getObjectByName("wrap").material.map = pbrTexture.map
 
 watch(userSettings, () =>{
   console.log("watch " + userSettings.waxes.color)
@@ -78,13 +79,9 @@ watch(userSettings, () =>{
 
   //scentStyle - Label
 
-  scene.getObjectByName('wrap').material.map = pbrTexture.map
-  // console.log(userSettings.scents.id , labelStore[userSettings.scents.id])
-  // console.log(scene.getObjectByName('wrap').material)
 
 
 });
-//const apple = await useLoader(TextureLoader, '.src/models/textures/apple.png',)
 
 
 const isVisible = computed(() => {

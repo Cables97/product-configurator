@@ -5,6 +5,9 @@ import { useLoader } from '@tresjs/core'
 import { TextureLoader } from 'three'
 import { useTexture } from '@tresjs/core'
 
+// const pbrTexture = await useTexture({
+//   map: "https://raw.githubusercontent.com/Cables97/product-configurator/main/src/models/textures/apple.png",
+// })
 
 
 export const materialsStore = defineStore('materialsStore', () =>{
@@ -26,12 +29,12 @@ export const materialsStore = defineStore('materialsStore', () =>{
     color: "#ddd",
   })
 
-  const matLabel = new THREE.MeshPhongMaterial({
-    color: "#ddd",
-  })
+  // const matLabel = new THREE.MeshPhysicalMaterial({
+  //   map: pbrTexture,
+  // })
 
 
-  return {matGlass, matMetal, matWax, matLabel}
+  return {matGlass, matMetal, matWax}
 })
 
 
