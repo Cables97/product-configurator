@@ -25,7 +25,7 @@ let candlePath = "./src/models/Candle_wide.gltf"
 const { scene } = await useLoader(GLTFLoader, candlePath)
 
 const pbrTexture = await useTexture({
-  map: '@/models/textures/apple2.jpg',
+  map: "https://raw.githubusercontent.com/Cables97/product-configurator/main/src/models/textures/apple2.png",
 })
 
 scene.getObjectByName("wrap").material.map = pbrTexture.map
