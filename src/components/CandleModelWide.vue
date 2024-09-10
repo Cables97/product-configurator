@@ -25,7 +25,7 @@ let candlePath = "./src/models/Candle_wide.gltf"
 const { scene } = await useLoader(GLTFLoader, candlePath)
 
 const pbrTexture = await useTexture({
-  map: "https://raw.githubusercontent.com/Tresjs/assets/main/textures/black-rock/Rock035_2K_Displacement.jpg",
+  map: "https://raw.githubusercontent.com/Cables97/product-configurator/main/src/models/textures/apple.png",
 })
 scene.getObjectByName('wrap').material = materialStore.matLabel
 
