@@ -1,0 +1,78 @@
+<template>
+    <primitive :object="scene" :scale="10" :visible="isVisible"/>
+  </template>
+  
+  
+  <script setup>
+
+    import { ref, computed, watch } from 'vue'
+    import { useLoader } from '@tresjs/core'
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader'
+    import { userSettingsStore, menuSettingsStore, materialsStore } from '@/stores/store'; 
+
+    const userSettings = userSettingsStore().userStore
+    const menuSettings = menuSettingsStore()
+    const materialStore = materialsStore()
+
+    let candlePath = "./src/models/Candle_small.gltf"
+    const { scene } = await useLoader(GLTFLoader, candlePath)
+
+
+    watch(userSettings, () =>{
+
+    //wickStyle
+    switch(userSettings.wicks.id){
+        case "single":
+        scene.getObjectByName("singleWick").visible = true
+        scene.getObjectByName("tripleWick").visible = false
+        scene.getObjectByName("woodWick").visible = false
+        break;
+        case "triple":
+        scene.getObjectByName("singleWick").visible = false
+        scene.getObjectByName("tripleWick").visible = true
+        scene.getObjectByName("woodWick").visible = false
+        break;
+
+        case "wood":
+        scene.getObjectByName("singleWick").visible = false
+        scene.getObjectByName("tripleWick").visible = false
+        scene.getObjectByName("woodWick").visible = true
+        break;
+
+        default:
+        null
+        break;
+        }
+
+    //waxColor
+    scene.getObjectByName("wax").material.color.set(userSettings.waxes.color) 
+
+    //containerStyle
+    switch(userSettings.containers.id){
+        case "glass":
+        scene.getObjectByName("container").material = materialStore.matGlass
+        break;
+
+        case "metal":
+        scene.getObjectByName("container").material = materialStore.matMetal
+        break;
+
+        default:
+        null
+        break;
+
+        }
+    });
+
+
+    const isVisible = computed(() => {
+    return ((userSettings.candles.id) == "small") ? true : false
+    })
+
+
+
+  
+  
+  
+  
+</script>

@@ -1,0 +1,61 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+@mixin text-Inter($size, $weight){
+    font-family: "Inter", system-ui;
+    font-optical-sizing: auto;
+    font-weight: $weight;
+    font-size: $size;
+    font-style: normal;
+}
+
+@mixin hover-popup{
+    position:absolute;
+    top:-2.2em;
+    width:auto;
+    text-wrap: nowrap;
+    left:50%;
+    transform: translate(-50%,0);
+    background-color:#34363c;
+    box-shadow: 0 0 5px 5px rgba($color: #000, $alpha: 0.25);
+    border-radius: 10px;
+    padding:4px 8px;
+    opacity:0%;
+    transition: opacity 0.25s;
+
+    p,
+    span{
+        font-weight: 600;
+        color:white;
+        text-align: center; 
+    }
+
+    span.increase{
+        color:red;
+        &:before{
+            content: "+";
+            margin-right: 0;
+            font-weight: 600;
+
+        }
+    }
+    span.decrease{
+        color:green;
+
+    }
+}
+
+
+
+.test {
+    color: orange;
+}
+
+.test2 {
+    color: red;
+}
+
+@mixin taco(){
+    color:purple;
+}
