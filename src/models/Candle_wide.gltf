@@ -445,6 +445,9 @@
     },
     {
       "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
         "metallicFactor": 0.0,
         "roughnessFactor": 0.0
       },
@@ -474,6 +477,24 @@
         "roughnessFactor": 0.0
       },
       "name": "WoodWick"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0,
+      "name": "apple2.png"
+    }
+  ],
+  "images": [
+    {
+      "uri": "apple2.png"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
     }
   ]
 }
