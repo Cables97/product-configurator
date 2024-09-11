@@ -61,7 +61,7 @@ export const menuOptionsStore = defineStore('optionsMenu', () => {
       options:{
         name: "Basic Scents",
         list:[
-          { id:"apple", name:"Apple Orchard Bloom", cost:0 , icon:"https://raw.githubusercontent.com/Cables97/product-configurator/main/src/models/textures/pumpkin.svg"},
+          { id:"apple", name:"Apple Orchard Bloom", cost:0 , icon:"https://raw.githubusercontent.com/Cables97/product-configurator/863812e44040bc2fb02e8bdbcfc55d9e423c759e/src/components/icons/pumpkin.svg"},
         ],
       },
 
