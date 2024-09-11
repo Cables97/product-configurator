@@ -48,7 +48,7 @@
 
 
 
-            <TresAmbientLight :intensity="2" />
+            <TresAmbientLight :intensity="1.5" />
 
 
             

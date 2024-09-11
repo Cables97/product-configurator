@@ -6,11 +6,9 @@
 <script setup>
 
 import { ref, computed, watch } from 'vue'
-import * as THREE from 'three';
 import { useLoader } from '@tresjs/core'
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader'
 import { userSettingsStore, menuSettingsStore, materialsStore } from '@/stores/store'; 
-import { TextureLoader } from 'three'
 import { useTexture } from '@tresjs/core'
 
 
@@ -24,7 +22,7 @@ const materialStore = materialsStore()
 let candlePath = "./src/models/Candle_wide.gltf"
 const { scene } = await useLoader(GLTFLoader, candlePath)
 
-const apple = await useTexture({ map: "https://raw.githubusercontent.com/Cables97/product-configurator/main/src/models/textures/apple.png", })
+const apple = await useTexture({ map: "https://raw.githubusercontent.com/Cables97/product-configurator/main/src/models/textures/apple.png", color: "black"})
 const maple = await useTexture({ map: "https://raw.githubusercontent.com/Cables97/product-configurator/main/src/models/textures/maple.png", })
 const pumpkin = await useTexture({ map: "https://raw.githubusercontent.com/Cables97/product-configurator/main/src/models/textures/pumpkin.png", })
 const pine = await useTexture({ map: "https://raw.githubusercontent.com/Cables97/product-configurator/main/src/models/textures/pine.png", })
@@ -83,25 +81,28 @@ watch(userSettings, () =>{
     break;
 
   }
-
+  //console.log(scene.getObjectByName("wrap"))
+  console.log(userSettings.scents.id)
   //scentStyle - Label
   switch(userSettings.scents.id){
     case "apple":
-      scene.getObjectByName("container").material = apple.map
+      scene.getObjectByName("wrap").material.map = apple.map
     break;
     case "maple":
-      scene.getObjectByName("container").material = maple.map
+      scene.getObjectByName("wrap").material.map = maple.map
     break;
     case "pumpkin":
-      scene.getObjectByName("container").material = pumpkin.map
+      scene.getObjectByName("wrap").material.map = pumpkin.map
     break;
     case "pine":
-      scene.getObjectByName("container").material = pine.map
+      scene.getObjectByName("wrap").material.map = pine.map
     break;
     case "cookie":
-      scene.getObjectByName("container").material = cookie.map
+      scene.getObjectByName("wrap").material.map = cookie.map
     break;
-
+    default:
+      null
+    break;
 
 
 

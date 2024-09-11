@@ -5,10 +5,11 @@
   
   <script setup>
 
-    import { ref, computed, watch } from 'vue'
-    import { useLoader } from '@tresjs/core'
-    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader'
-    import { userSettingsStore, menuSettingsStore, materialsStore } from '@/stores/store'; 
+import { ref, computed, watch } from 'vue'
+import { useLoader } from '@tresjs/core'
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader'
+import { userSettingsStore, menuSettingsStore, materialsStore } from '@/stores/store'; 
+import { useTexture } from '@tresjs/core'
 
     const userSettings = userSettingsStore().userStore
     const menuSettings = menuSettingsStore()
@@ -80,29 +81,27 @@ watch(userSettings, () =>{
   }
 
   //scentStyle - Label
-  switch(userSettings.scents.id){
-    case "apple":
-      scene.getObjectByName("container").material = apple.map
-    break;
-    case "maple":
-      scene.getObjectByName("container").material = maple.map
-    break;
-    case "pumpkin":
-      scene.getObjectByName("container").material = pumpkin.map
-    break;
-    case "pine":
-      scene.getObjectByName("container").material = pine.map
-    break;
-    case "cookie":
-      scene.getObjectByName("container").material = cookie.map
-    break;
+  // switch(userSettings.scents.id){
+  //   case "apple":
+  //     scene.getObjectByName("wrap").material = apple.map
+  //   break;
+  //   case "maple":
+  //     scene.getObjectByName("wrap").material = maple.map
+  //   break;
+  //   case "pumpkin":
+  //     scene.getObjectByName("wrap").material = pumpkin.map
+  //   break;
+  //   case "pine":
+  //     scene.getObjectByName("wrap").material = pine.map
+  //   break;
+  //   case "cookie":
+  //     scene.getObjectByName("wrap").material = cookie.map
+  //   break;
+  //   default:
+  //     null
+  //   break;
 
-
-
-
-
-
-  }
+  // }
   
 
 
