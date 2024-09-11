@@ -48,7 +48,6 @@ import { ref } from 'vue'
 
 import { menuOptionsStore , menuSettingsStore } from '@/stores/store';
 import { computed } from 'vue';
-import OptionLarge from '@/components/OptionLarge.vue'
 import { userSettingsStore } from '@/stores/store'; 
 import OptionButton from './OptionButton.vue';
 

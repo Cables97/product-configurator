@@ -6,6 +6,7 @@
         :style="{ 'background-color' : backgroundColorSetter(item)}"
         @click="setCurrentChoice(item)">
         <div class="popup"><p>{{ item.name }} <span :class="{ 'decrease' : item.cost < userSettings[menuSettings.currentPage.id].cost, 'increase' : item.cost > userSettings[menuSettings.currentPage.id].cost }">{{item.cost - userSettings[menuSettings.currentPage.id].cost  }}</span></p></div>
+        <img :src="item.icon">
     </button>    
 
     <button class="option-circle" 
