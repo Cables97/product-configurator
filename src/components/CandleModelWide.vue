@@ -24,15 +24,22 @@ const materialStore = materialsStore()
 let candlePath = "./src/models/Candle_wide.gltf"
 const { scene } = await useLoader(GLTFLoader, candlePath)
 
-const pbrTexture = await useTexture({
-  map: "https://raw.githubusercontent.com/Cables97/product-configurator/main/src/models/textures/apple2.png",
-})
+const apple = await useTexture({ map: "https://raw.githubusercontent.com/Cables97/product-configurator/main/src/models/textures/apple.png", })
+const maple = await useTexture({ map: "https://raw.githubusercontent.com/Cables97/product-configurator/main/src/models/textures/maple.png", })
+const pumpkin = await useTexture({ map: "https://raw.githubusercontent.com/Cables97/product-configurator/main/src/models/textures/pumpkin.png", })
+const pine = await useTexture({ map: "https://raw.githubusercontent.com/Cables97/product-configurator/main/src/models/textures/pine.png", })
+const cookie = await useTexture({ map: "https://raw.githubusercontent.com/Cables97/product-configurator/main/src/models/textures/cookie.png", })
 
-scene.getObjectByName("wrap").material.map = pbrTexture.map
+
+apple.map.flipY = false;
+maple.map.flipY = false;
+pumpkin.map.flipY = false;
+pine.map.flipY = false;
+cookie.map.flipY = false;
+
+scene.getObjectByName("wrap").material.map = apple.map
 
 watch(userSettings, () =>{
-  console.log("watch " + userSettings.waxes.color)
-
   //wickStyle
   switch(userSettings.wicks.id){
     case "single":
@@ -78,7 +85,30 @@ watch(userSettings, () =>{
   }
 
   //scentStyle - Label
+  switch(userSettings.scents.id){
+    case "apple":
+      scene.getObjectByName("container").material = apple.map
+    break;
+    case "maple":
+      scene.getObjectByName("container").material = maple.map
+    break;
+    case "pumpkin":
+      scene.getObjectByName("container").material = pumpkin.map
+    break;
+    case "pine":
+      scene.getObjectByName("container").material = pine.map
+    break;
+    case "cookie":
+      scene.getObjectByName("container").material = cookie.map
+    break;
 
+
+
+
+
+
+  }
+  
 
 
 });

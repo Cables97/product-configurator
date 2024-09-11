@@ -70,8 +70,9 @@
         {
           "attributes": {
             "POSITION": 1,
-            "NORMAL": 2,
-            "TEXCOORD_0": 3
+            "TANGENT": 2,
+            "NORMAL": 3,
+            "TEXCOORD_0": 4
           },
           "indices": 0,
           "material": 0
@@ -83,11 +84,12 @@
       "primitives": [
         {
           "attributes": {
-            "POSITION": 5,
-            "NORMAL": 6,
-            "TEXCOORD_0": 7
+            "POSITION": 6,
+            "TANGENT": 7,
+            "NORMAL": 8,
+            "TEXCOORD_0": 9
           },
-          "indices": 4,
+          "indices": 5,
           "material": 1
         }
       ],
@@ -97,11 +99,12 @@
       "primitives": [
         {
           "attributes": {
-            "POSITION": 9,
-            "NORMAL": 10,
-            "TEXCOORD_0": 11
+            "POSITION": 11,
+            "TANGENT": 12,
+            "NORMAL": 13,
+            "TEXCOORD_0": 14
           },
-          "indices": 8,
+          "indices": 10,
           "material": 2
         }
       ],
@@ -111,11 +114,12 @@
       "primitives": [
         {
           "attributes": {
-            "POSITION": 13,
-            "NORMAL": 14,
-            "TEXCOORD_0": 15
+            "POSITION": 16,
+            "TANGENT": 17,
+            "NORMAL": 18,
+            "TEXCOORD_0": 19
           },
-          "indices": 12,
+          "indices": 15,
           "material": 3
         }
       ],
@@ -125,11 +129,12 @@
       "primitives": [
         {
           "attributes": {
-            "POSITION": 17,
-            "NORMAL": 18,
-            "TEXCOORD_0": 19
+            "POSITION": 21,
+            "TANGENT": 22,
+            "NORMAL": 23,
+            "TEXCOORD_0": 24
           },
-          "indices": 16,
+          "indices": 20,
           "material": 3
         }
       ],
@@ -139,11 +144,12 @@
       "primitives": [
         {
           "attributes": {
-            "POSITION": 21,
-            "NORMAL": 22,
-            "TEXCOORD_0": 23
+            "POSITION": 26,
+            "TANGENT": 27,
+            "NORMAL": 28,
+            "TEXCOORD_0": 29
           },
-          "indices": 20,
+          "indices": 25,
           "material": 4
         }
       ],
@@ -176,6 +182,13 @@
       "name": "accessorPositions"
     },
     {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 622,
+      "type": "VEC4",
+      "name": "accessorTangents"
+    },
+    {
       "bufferView": 1,
       "byteOffset": 7464,
       "componentType": 5126,
@@ -184,7 +197,7 @@
       "name": "accessorNormals"
     },
     {
-      "bufferView": 2,
+      "bufferView": 3,
       "componentType": 5126,
       "count": 622,
       "type": "VEC2",
@@ -217,6 +230,14 @@
       "name": "accessorPositions"
     },
     {
+      "bufferView": 2,
+      "byteOffset": 9952,
+      "componentType": 5126,
+      "count": 291,
+      "type": "VEC4",
+      "name": "accessorTangents"
+    },
+    {
       "bufferView": 1,
       "byteOffset": 18420,
       "componentType": 5126,
@@ -225,7 +246,7 @@
       "name": "accessorNormals"
     },
     {
-      "bufferView": 2,
+      "bufferView": 3,
       "byteOffset": 4976,
       "componentType": 5126,
       "count": 291,
@@ -259,6 +280,14 @@
       "name": "accessorPositions"
     },
     {
+      "bufferView": 2,
+      "byteOffset": 14608,
+      "componentType": 5126,
+      "count": 30,
+      "type": "VEC4",
+      "name": "accessorTangents"
+    },
+    {
       "bufferView": 1,
       "byteOffset": 22272,
       "componentType": 5126,
@@ -267,7 +296,7 @@
       "name": "accessorNormals"
     },
     {
-      "bufferView": 2,
+      "bufferView": 3,
       "byteOffset": 7304,
       "componentType": 5126,
       "count": 30,
@@ -301,6 +330,14 @@
       "name": "accessorPositions"
     },
     {
+      "bufferView": 2,
+      "byteOffset": 15088,
+      "componentType": 5126,
+      "count": 27,
+      "type": "VEC4",
+      "name": "accessorTangents"
+    },
+    {
       "bufferView": 1,
       "byteOffset": 22956,
       "componentType": 5126,
@@ -309,7 +346,7 @@
       "name": "accessorNormals"
     },
     {
-      "bufferView": 2,
+      "bufferView": 3,
       "byteOffset": 7544,
       "componentType": 5126,
       "count": 27,
@@ -343,6 +380,14 @@
       "name": "accessorPositions"
     },
     {
+      "bufferView": 2,
+      "byteOffset": 15520,
+      "componentType": 5126,
+      "count": 81,
+      "type": "VEC4",
+      "name": "accessorTangents"
+    },
+    {
       "bufferView": 1,
       "byteOffset": 24252,
       "componentType": 5126,
@@ -351,7 +396,7 @@
       "name": "accessorNormals"
     },
     {
-      "bufferView": 2,
+      "bufferView": 3,
       "byteOffset": 7760,
       "componentType": 5126,
       "count": 81,
@@ -385,6 +430,14 @@
       "name": "accessorPositions"
     },
     {
+      "bufferView": 2,
+      "byteOffset": 16816,
+      "componentType": 5126,
+      "count": 60,
+      "type": "VEC4",
+      "name": "accessorTangents"
+    },
+    {
       "bufferView": 1,
       "byteOffset": 25944,
       "componentType": 5126,
@@ -393,7 +446,7 @@
       "name": "accessorNormals"
     },
     {
-      "bufferView": 2,
+      "bufferView": 3,
       "byteOffset": 8408,
       "componentType": 5126,
       "count": 60,
@@ -417,6 +470,13 @@
     {
       "buffer": 0,
       "byteOffset": 35580,
+      "byteLength": 17776,
+      "byteStride": 16,
+      "name": "bufferViewFloatVec4"
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 53356,
       "byteLength": 8888,
       "byteStride": 8,
       "name": "bufferViewFloatVec2"
@@ -425,7 +485,7 @@
   "buffers": [
     {
       "uri": "Candle_wide.bin",
-      "byteLength": 44468
+      "byteLength": 62244
     }
   ],
   "materials": [
