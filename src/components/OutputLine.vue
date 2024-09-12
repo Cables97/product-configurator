@@ -2,40 +2,43 @@
     <div class="output-wrap">
 
         <div class="price-wrap">
-            <div class="base price">
+
+            <div class="base price" v-if="menuSettings.isLoading">
                 <h3>{{ userSettings.candles.name }}</h3>
                 <h1>${{ userSettings.candles.cost }}</h1>
             </div>
 
-            <div class="divider"><h1>+</h1></div>
+            <div class="divider" v-if="menuSettings.isLoading"><h1>+</h1></div>
 
-            <div class="extras price">
+            <div class="extras price" v-if="menuSettings.isLoading">
                 <h3>EXTRAS</h3>
                 <h1>${{ calculatedExtra }}</h1>
             </div>
 
-            <div class="divider"><h1>=</h1></div>
+            <div class="divider" v-if="menuSettings.isLoading"><h1>=</h1></div>
 
-            <div class="total price">
+            <div class="total price" v-if="menuSettings.isLoading">
                 <h3>SUBTOTAL</h3>
                 <h1>${{ calculatedTotal }}</h1>
             </div>
+
         </div>
         
 
-        <div class="checkout-btn">
-            <button>NEXT: <span>EXTRAS</span></button>
+        <div class="add-cart-btn">
+            <button @click="addToCart()">ADD TO: <span>CART</span></button>
         </div>
 
     </div>
 </template>
 
 <script setup>
-    import { userSettingsStore } from '@/stores/store'; 
+    import { userSettingsStore, menuSettingsStore } from '@/stores/store'; 
     import { computed } from 'vue';
 
     const userSettings = userSettingsStore().userStore
-    console.log(userSettings)
+    const cart = userSettingsStore().cart
+    const menuSettings = menuSettingsStore()
 
 
 const calculatedExtra = computed( () =>{
@@ -43,12 +46,41 @@ const calculatedExtra = computed( () =>{
     return total
 })
 
-
 const calculatedTotal = computed( () =>{
     let total = userSettings.candles.cost + userSettings.wicks.cost + userSettings.scents.cost + userSettings.containers.cost + userSettings.waxes.cost
     return total
 })
 
+function addToCart(){
+    const currentItemDetails = {
+        candles : userSettings.candles,
+        wicks: userSettings.wicks,
+        scents: userSettings.scents,
+        containers: userSettings.containers,
+        waxes: userSettings.waxes,
+    }
+    console.log(currentItemDetails)
+    let candleType = currentItemDetails.candles.name.split(" ")
+    let name = candleType[0] + " " + currentItemDetails.scents.name + " " + candleType[1]
+    console.log(name)
+    let totalCost = 0
+    for(let key in currentItemDetails){
+        totalCost += currentItemDetails[key].cost 
+    }
+
+    const cartItem = new CartItem(name, totalCost, currentItemDetails)
+    console.log(cartItem)
+    cart.push(cartItem)
+}
+
+class CartItem{
+    constructor(name, cost, currentItem){
+        this.name = name
+        this.cost = cost
+        this.quantity = 1
+        this.details = currentItem
+    }
+}
 
 
 </script>
@@ -83,15 +115,14 @@ const calculatedTotal = computed( () =>{
         }
 
         
-        .checkout-btn{
+        .add-cart-btn{
             button{
+                @include text-Inter(20px, 600);
                 height:80px;
                 width:280px;
                 background-color: #008019;
                 border-radius: 10px;
                 border:2px solid #008019;
-                font-size: 20px;
-                font-weight: 600;
                 letter-spacing: 1px;
                 color:white;
                 transition: background-color 0.25s, border 0.33s;
@@ -124,7 +155,7 @@ const calculatedTotal = computed( () =>{
         }
 
         
-        .checkout-btn{
+        .add-cart-btn{
             button{
                 height:80px;
                 width:160px;

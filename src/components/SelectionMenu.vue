@@ -4,7 +4,9 @@
 
         <div class="menu-nav">
             <div v-for="item in menuNavOptions">
-                <NavBox :data-name="item" @click="changeMenuPage(item)" :class="{ 'active' : item == menuSettings.currentPage.id }"/>
+                <NavBox :data-name="item" @click="changeMenuPage(item)" :class="{ 'active' : item == menuSettings.currentPage.id }">
+                    <img :src="menuOptions[item].img"/>
+                </NavBox>
             </div>
 
 
@@ -18,9 +20,13 @@
                 <div class="menu-choices-wrap">
                     <h3 class="m-c-title">{{ menuSettings.currentPage.options.name }}<span class="desktop-choice" v-if="optionChoiceToggle === 0">  -  {{ userSettings[menuSettings.currentPage.id].name }}</span></h3>
                     <div class="menu-choices">
-                        <div class="m-c" v-for="option in menuSettings.currentPage.options.list">
-                            <OptionButton :item=option ></OptionButton>
-                        </div>
+                        
+                            <div class="m-c" v-for="option in menuSettings.currentPage.options.list">
+                                
+                                    <OptionButton :item=option ></OptionButton>
+
+                            </div>
+                        
                     </div>
                 </div>
                 
@@ -85,6 +91,7 @@ function findObject(id, parent){
 
 <style lang="scss">
 
+
     .config-nav-active{
         .menu-box{
             background-color: #4a4D56;
@@ -130,7 +137,7 @@ function findObject(id, parent){
                         font-weight: 500;
 
                         .desktop-choice{
-                            opacity:50%;
+                            opacity:0%;
                         }
                     }
                     .menu-choices{

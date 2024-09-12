@@ -9,15 +9,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@floating-ui/vue": "^1.1.4",
+    "@popperjs/core": "^2.11.8",
     "@tresjs/cientos": "^4.0.2",
     "@tresjs/core": "^4.2.10",
     "gsap": "^3.12.5",
     "pinia": "^2.1.7",
+    "primevue": "^4.0.7",
     "sass": "^1.78.0",
     "sass-loader": "^16.0.1",
     "three": "^0.168.0",
     "vue": "^3.4.29",
-    "vue-router": "^4.3.3"
+    "vue-router": "^4.3.3",
+    "vue-select": "^4.0.0-beta.6"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",

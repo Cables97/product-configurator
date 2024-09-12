@@ -1,5 +1,5 @@
 <template>
-    <primitive :object="scene" :scale="10" :position="[0, -0.5, 0]" :visible="isVisible"/>
+    <primitive :object="scene" :scale="10" :position="[0, -0.5, 0]" v-if="(userSettings.candles.id) == 'tall'"/>
   </template>
   
   
@@ -17,20 +17,23 @@ import { useTexture } from '@tresjs/core'
   let candlePath = "./src/models/Candle_tall.gltf"
   const { scene } = await useLoader(GLTFLoader, candlePath)
 
-    const apple = await useTexture({ map: "https://raw.githubusercontent.com/Cables97/product-configurator/main/src/models/textures/apple.png", })
-    const maple = await useTexture({ map: "https://raw.githubusercontent.com/Cables97/product-configurator/main/src/models/textures/maple.png", })
-    const pumpkin = await useTexture({ map: "https://raw.githubusercontent.com/Cables97/product-configurator/main/src/models/textures/pumpkin.png", })
-    const pine = await useTexture({ map: "https://raw.githubusercontent.com/Cables97/product-configurator/main/src/models/textures/pine.png", })
-    const cookie = await useTexture({ map: "https://raw.githubusercontent.com/Cables97/product-configurator/main/src/models/textures/cookie.png", })
+  const apple = await useTexture({ map: "/images/labels/apple.png", color: "black"})
+const maple = await useTexture({ map: "/images/labels/maple.png", })
+const pumpkin = await useTexture({ map: "/images/labels/pumpkin.png", })
+const pine = await useTexture({ map: "/images/labels/pine.png", })
+const cookie = await useTexture({ map: "/images/labels/cookie.png", })
+
+const woodTexture = await useTexture({ map: "/images/labels/texWood.jpg" })
 
 
-    apple.map.flipY = false;
-    maple.map.flipY = false;
-    pumpkin.map.flipY = false;
-    pine.map.flipY = false;
-    cookie.map.flipY = false;
 
-    scene.getObjectByName("wrap").material.map = apple.map
+apple.map.flipY = false;
+maple.map.flipY = false;
+pumpkin.map.flipY = false;
+pine.map.flipY = false;
+cookie.map.flipY = false;
+scene.getObjectByName("wrap").material = materialStore.matLabel
+scene.getObjectByName("wrap").material.map = apple.map
 
 watch(userSettings, () =>{
   //wickStyle
@@ -70,37 +73,41 @@ watch(userSettings, () =>{
     case "metal":
       scene.getObjectByName("container").material = materialStore.matMetal
     break;
+    case "wood":
+      scene.getObjectByName("container").material = materialStore.matWood
+      scene.getObjectByName("container").material.map = woodTexture.map
+    break;
 
     default:
       null
     break;
 
   }
-
+  //console.log(scene.getObjectByName("wrap"))
+  console.log(userSettings.scents.id)
   //scentStyle - Label
-//   switch(userSettings.scents.id){
-//     case "apple":
-//       scene.getObjectByName("wrap").material = apple.map
-//     break;
-//     case "maple":
-//       scene.getObjectByName("wrap").material = maple.map
-//     break;
-//     case "pumpkin":
-//       scene.getObjectByName("wrap").material = pumpkin.map
-//     break;
-//     case "pine":
-//       scene.getObjectByName("wrap").material = pine.map
-//     break;
-//     case "cookie":
-//       scene.getObjectByName("wrap").material = cookie.map
-//     break;
-//     default:
-//       null
-//     break;
-
-//   }
-  
+  switch(userSettings.scents.id){
+    case "apple":
+      scene.getObjectByName("wrap").material.map = apple.map
+    break;
+    case "maple":
+      scene.getObjectByName("wrap").material.map = maple.map
+    break;
+    case "pumpkin":
+      scene.getObjectByName("wrap").material.map = pumpkin.map
+    break;
+    case "pine":
+      scene.getObjectByName("wrap").material.map = pine.map
+    break;
+    case "cookie":
+      scene.getObjectByName("wrap").material.map = cookie.map
+    break;
+    default:
+      null
+    break;
+  }
 });
+
 
 
 

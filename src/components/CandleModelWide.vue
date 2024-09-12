@@ -1,5 +1,5 @@
 <template>
-  <primitive :object="scene" :scale="10" :visible="isVisible"/>
+  <primitive :object="scene" :scale="10" v-if="(userSettings.candles.id) == 'wide'"/>
 </template>
 
 
@@ -22,11 +22,14 @@ const materialStore = materialsStore()
 let candlePath = "./src/models/Candle_wide.gltf"
 const { scene } = await useLoader(GLTFLoader, candlePath)
 
-const apple = await useTexture({ map: "https://raw.githubusercontent.com/Cables97/product-configurator/main/src/models/textures/apple.png", color: "black"})
-const maple = await useTexture({ map: "https://raw.githubusercontent.com/Cables97/product-configurator/main/src/models/textures/maple.png", })
-const pumpkin = await useTexture({ map: "https://raw.githubusercontent.com/Cables97/product-configurator/main/src/models/textures/pumpkin.png", })
-const pine = await useTexture({ map: "https://raw.githubusercontent.com/Cables97/product-configurator/main/src/models/textures/pine.png", })
-const cookie = await useTexture({ map: "https://raw.githubusercontent.com/Cables97/product-configurator/main/src/models/textures/cookie.png", })
+const apple = await useTexture({ map: "/images/labels/apple.png", color: "black"})
+const maple = await useTexture({ map: "/images/labels/maple.png", })
+const pumpkin = await useTexture({ map: "/images/labels/pumpkin.png", })
+const pine = await useTexture({ map: "/images/labels/pine.png", })
+const cookie = await useTexture({ map: "/images/labels/cookie.png", })
+
+const woodTexture = await useTexture({ map: "/images/labels/texWood.jpg" })
+
 
 
 apple.map.flipY = false;
@@ -34,7 +37,7 @@ maple.map.flipY = false;
 pumpkin.map.flipY = false;
 pine.map.flipY = false;
 cookie.map.flipY = false;
-
+scene.getObjectByName("wrap").material = materialStore.matLabel
 scene.getObjectByName("wrap").material.map = apple.map
 
 watch(userSettings, () =>{
@@ -74,6 +77,10 @@ watch(userSettings, () =>{
 
     case "metal":
       scene.getObjectByName("container").material = materialStore.matMetal
+    break;
+    case "wood":
+      scene.getObjectByName("container").material = materialStore.matWood
+      scene.getObjectByName("container").material.map = woodTexture.map
     break;
 
     default:
@@ -115,9 +122,9 @@ watch(userSettings, () =>{
 });
 
 
-const isVisible = computed(() => {
-  return ((userSettings.candles.id) == "wide") ? true : false
-})
+// const isVisible = computed(() => {
+//   return ((userSettings.candles.id) == "wide") ? true : false
+// })
 
 
 //default Settings

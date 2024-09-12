@@ -3,8 +3,9 @@
     <div class="config-wrapper">
 
         <div class="config">
-
-            <div class="display"> <DisplayBox /> </div>
+            <Suspense>
+                <div class="display"> <DisplayBox /> </div>
+            </Suspense>
 
             <div class="menu"> <SelectionMenu/> </div>
 

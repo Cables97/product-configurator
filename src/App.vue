@@ -2,8 +2,23 @@
 import { RouterLink, RouterView } from 'vue-router'
 import ConfiguratorView from './views/ConfiguratorView.vue';
 import NavBox from './components/NavBox.vue';
+import CartDisplay from './components/CartDisplay.vue';
 import CartButton from './components/CartButton.vue';
+import { ref } from 'vue';
+import { userSettingsStore, menuSettingsStore, materialsStore } from '@/stores/store'; 
 
+const menuSettings = menuSettingsStore()
+
+menuSettings.isCartOpen
+
+function openCart(){
+  console.log("click" + menuSettings.isCartOpen)
+  if(menuSettings.isCartOpen){
+    menuSettings.isCartOpen = false
+  }else{
+    menuSettings.isCartOpen = true
+  }
+}
 
 //run =>cd tres-configurator && npm run dev
 </script>
@@ -18,11 +33,14 @@ import CartButton from './components/CartButton.vue';
     </div>
 
     <div class="cart">
-      <CartButton/>
+      <CartButton @click="openCart()"/>
+
     </div>
 
   </header>
-
+    <Transition name="cart-display">
+      <CartDisplay v-show="menuSettings.isCartOpen"/>
+    </Transition>
   <div class="content">
       <RouterView></RouterView>
   </div>
@@ -46,7 +64,7 @@ header{
   align-items: center;
   background-color: #181818;
   box-shadow: 0 0 20px 50px rgba($color: #000, $alpha: .5);
-  z-index: 99;
+  z-index:10000;
   .head-nav{
     width:60%;
     height: 80%;
@@ -56,7 +74,6 @@ header{
     gap:40px;
     align-items: center;
     padding:40px;
-
     a{
       text-decoration: none;
       color:#AAA;
@@ -66,8 +83,27 @@ header{
         transition: all 0.25s;
       }
     }
+    .cart{
+      position:relative;
+    }
   }
 }
+
+
+
+    .cart-display-enter-active,
+    .cart-display-leave-active {
+      transition: all 0.5s ease;
+      transform-origin: top;
+    }
+
+    .cart-display-enter-from,
+    .cart-display-leave-to {
+      transform:rotateX(-90deg);
+      opacity: 0;
+    }
+
+
 
 a.head-nav-active{
 

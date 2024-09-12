@@ -1,21 +1,26 @@
 <template>
-    <div class="cart-wrapper">
+    <div class="cart-button">
         <IconCart></IconCart>
-        <div class="cart-count">1</div>
+        <div class="cart-count" v-if="cart.length >= 1">{{ cart.length }}</div>
     </div>
 </template>
 
 <script setup>
 import IconCart from './icons/IconCart.vue';
+import { userSettingsStore } from '@/stores/store'; 
+import { computed } from 'vue';
 
+    const cart = userSettingsStore().cart
 
 </script>
 
 <style lang="scss">
 
-.cart-wrapper{
+.cart-button{
     padding:20px;
     position: relative;
+    border:1px solid red;
+    margin-right:50px;
     .cart-count{
         position: absolute;
         top:14px;
@@ -30,8 +35,6 @@ import IconCart from './icons/IconCart.vue';
     }
 
 
-
-
     &:hover{
         cursor: pointer;
     }
@@ -40,6 +43,7 @@ import IconCart from './icons/IconCart.vue';
 @media only screen and (max-width: 800px) {
   
 .cart-wrapper{
+    position: relative;
     padding:10px;
     .cart-count{
         top:10px;

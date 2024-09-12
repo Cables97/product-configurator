@@ -1,23 +1,26 @@
 <template>
 
-    <button class="option-button" 
-        v-if="propCheck(item, 'icon')" 
-        :class="{ grad : propCheck(item, 'grad') , 'active' : item.id === userSettings[menuSettings.currentPage.id].id}" 
-        :style="{ 'background-color' : backgroundColorSetter(item)}"
-        @click="setCurrentChoice(item)">
-        <div class="popup"><p>{{ item.name }} <span :class="{ 'decrease' : item.cost < userSettings[menuSettings.currentPage.id].cost, 'increase' : item.cost > userSettings[menuSettings.currentPage.id].cost }">{{item.cost - userSettings[menuSettings.currentPage.id].cost  }}</span></p></div>
-        <img src="https://raw.githubusercontent.com/Cables97/product-configurator/863812e44040bc2fb02e8bdbcfc55d9e423c759e/src/components/icons/pumpkin.svg">
-    </button>    
+    <Transition name="image-load">
+        <button class="option-button" 
+            v-if="propCheck(item, 'icon')" 
+            :class="{ grad : propCheck(item, 'grad') , 'active' : item.id === userSettings[menuSettings.currentPage.id].id}" 
+            :style="{ 'background-color' : backgroundColorSetter(item)}"
+            @click="setCurrentChoice(item)">
+            <div class="popup"><p>{{ item.name }} <span :class="{ 'decrease' : item.cost < userSettings[menuSettings.currentPage.id].cost, 'increase' : item.cost > userSettings[menuSettings.currentPage.id].cost }">{{item.cost - userSettings[menuSettings.currentPage.id].cost  }}</span></p></div>
+                <img :src="item.icon" />
+        </button>    
+    </Transition>
 
-    <button class="option-circle" 
-        v-if="!propCheck(item, 'icon')" 
-        :class="{ grad : propCheck(item, 'grad') , 'active' : item.id === userSettings[menuSettings.currentPage.id].id }" 
-        :style="{ 'background-color' : backgroundColorSetter(item) }"
-        @click="setCurrentChoice(item)"
-    >
-        <div class="popup"><p>{{ item.name }} {{item.cost -  userSettings[menuSettings.currentPage.id].cost  }}</p></div>
-    </button>
+        <button class="option-circle" 
+            v-if="!propCheck(item, 'icon')" 
+            :class="{ grad : propCheck(item, 'grad') , 'active' : item.id === userSettings[menuSettings.currentPage.id].id }" 
+            :style="{ 'background-color' : backgroundColorSetter(item) }"
+            @click="setCurrentChoice(item)"
+        >
+            <div class="popup"><p>{{ item.name }} {{item.cost -  userSettings[menuSettings.currentPage.id].cost  }}</p></div>
+        </button>
 
+    
 </template>
 
 <script setup>
@@ -57,6 +60,25 @@ function setCurrentChoice(item){
 
 <style lang="scss">
 
+    .image-load-enter-from{
+        opacity: 0;
+    }
+    .image-load-enter-to{
+        opacity: 100%;
+    }
+    .image-load-enter-active{
+        transition: all 0.1s;
+    }
+    
+
+
+    .image-load-leave-active{
+        display: none;
+        transition: all 0.5s;
+    }
+    
+
+
 .option-button{
     position: relative;
     height: 100px;
@@ -65,7 +87,7 @@ function setCurrentChoice(item){
     background: #34363c;
     border:2px solid #5c5f67;
 
-    transition: all 0.33s;
+    //transition: background-color 0.33s, border 0.33 ;
     aspect-ratio: 1;
 
     &.active{
@@ -130,7 +152,7 @@ function setCurrentChoice(item){
     border-radius: 50%;
     background-color: #34363c;
     border:2px solid #5c5f67;
-    transition: all 0.33s;
+   // transition: all 0.33s;
     aspect-ratio: 1;
     position: relative;
 

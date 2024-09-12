@@ -1,6 +1,6 @@
 <template>
     <div class="menu-box">
-        <slot name="icon"></slot>
+        <slot></slot>
     </div>
 </template>
 
@@ -17,6 +17,14 @@
         border-radius: 10px;
         border:2px solid #494a50;
         transition: all 0.33s;
+        position: relative;
+        img{
+            position: absolute;
+            top:50%;
+    
+            left:50%;
+            transform: translate(-50%,-50%);
+        }
 
 
         &.active{
