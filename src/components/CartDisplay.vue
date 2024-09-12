@@ -16,7 +16,7 @@
             <div v-for="item in cart">
                 <CartItem :info="item"/>
             </div>
-            <div class="cart-bottom">
+            <div class="cart-bottom" v-if="cart.length !== 0">
                 <div class="checkout-btn">
                     <button @click="addToCart(userSettings)">PROCEED TO CHECKOUT</button>
                 </div>

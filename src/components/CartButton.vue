@@ -19,7 +19,6 @@ import { computed } from 'vue';
 .cart-button{
     padding:20px;
     position: relative;
-    border:1px solid red;
     margin-right:50px;
     .cart-count{
         position: absolute;

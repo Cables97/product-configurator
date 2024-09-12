@@ -20,13 +20,9 @@
                 <div class="menu-choices-wrap">
                     <h3 class="m-c-title">{{ menuSettings.currentPage.options.name }}<span class="desktop-choice" v-if="optionChoiceToggle === 0">  -  {{ userSettings[menuSettings.currentPage.id].name }}</span></h3>
                     <div class="menu-choices">
-                        
-                            <div class="m-c" v-for="option in menuSettings.currentPage.options.list">
-                                
-                                    <OptionButton :item=option ></OptionButton>
-
-                            </div>
-                        
+                        <div class="m-c" v-for="option in menuSettings.currentPage.options.list">
+                                <OptionButton :item=option ></OptionButton>
+                        </div>
                     </div>
                 </div>
                 
