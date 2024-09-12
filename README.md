@@ -2,6 +2,7 @@
  TresJs + Vue based 3D product configurator inspired by [XboxGameLabs](https://xboxdesignlab.xbox.com/)
  
 ## Table of Contents
+- [Description](#description)
 - [Installation](#installation)
 - [Demo](#demo)
 - [Usage](#usage)
