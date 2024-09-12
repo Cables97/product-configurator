@@ -1,12 +1,16 @@
 # product-Configurator
  TresJs + Vue based 3D product configurator inspired by [XboxGameLabs](https://xboxdesignlab.xbox.com/)
-
+ 
 ## Table of Contents
 - [Installation](#installation)
 - [Demo](#demo)
 - [Usage](#usage)
 - [Author](#authors)
 - [License](#license)
+
+## Description
+
+The majority of this project is a framework that allows for users to create web-based product configurators, with a small example project....Candles!
 
 ## Installation
 
@@ -30,9 +34,6 @@ npm run dev
 ![Progress Demo](https://raw.githubusercontent.com/Cables97/product-configurator/main/public/images/progress_09122024.gif)
 
 ## Usage
-
-The majority of this project is a framework that allows for users to create web-based product configurators, with a small example project....Candles!
-
 
 Almost all info and layout is based on Objects in the Store. 
 
