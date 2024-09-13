@@ -19,7 +19,7 @@ const materialStore = materialsStore()
 
 
 
-let candlePath = "./src/models/Candle_wide.gltf"
+let candlePath = "/models/Candle_wide.gltf"
 const { scene } = await useLoader(GLTFLoader, candlePath)
 
 const apple = await useTexture({ map: "/images/labels/apple.png", color: "black"})

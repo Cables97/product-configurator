@@ -15,7 +15,7 @@ import { useTexture } from '@tresjs/core'
     const menuSettings = menuSettingsStore()
     const materialStore = materialsStore()
 
-    let candlePath = "./src/models/Candle_small.gltf"
+    let candlePath = "/models/Candle_small.gltf"
     const { scene } = await useLoader(GLTFLoader, candlePath)
 
     const apple = await useTexture({ map: "/images/labels/apple.png", color: "black"})
