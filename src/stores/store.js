@@ -63,9 +63,9 @@ export const menuOptionsStore = defineStore('optionsMenu', () => {
       options:{
         name: "Wick Style",
         list:[
-          { id: "single", name: "Single", icon: "/images/icons/wicks.svg", cost: 0 },
-          { id: "triple", name: "Triple", icon: "/images/icons/wicksTriple.svg", cost: 5 },
-          { id: "wood",  name: "Wood", icon: "/images/icons/wicksWood.svg", cost: 10 },
+          { id: "single", name: "Single Wick", icon: "/images/icons/wicks.svg", cost: 0 },
+          { id: "triple", name: "Triple Wick", icon: "/images/icons/wicksTriple.svg", cost: 5 },
+          { id: "wood",  name: "Wood Wick", icon: "/images/icons/wicksWood.svg", cost: 10 },
         ],
       },
     },

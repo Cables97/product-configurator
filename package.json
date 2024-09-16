@@ -13,6 +13,8 @@
     "@popperjs/core": "^2.11.8",
     "@tresjs/cientos": "^4.0.2",
     "@tresjs/core": "^4.2.10",
+    "@vueuse/components": "^11.1.0",
+    "@vueuse/core": "^11.1.0",
     "gsap": "^3.12.5",
     "pinia": "^2.1.7",
     "primevue": "^4.0.7",

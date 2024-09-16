@@ -1,5 +1,5 @@
 <template>
-        <div class="cart-display" id="cart-display">
+        <div class="cart-display" id="cart-display"  ref="cartBox">
 
             <div class="c-d-top-line" v-if="cart.length !== 0">
                 <h2>Cart</h2>
@@ -18,7 +18,7 @@
             </div>
             <div class="cart-bottom" v-if="cart.length !== 0">
                 <div class="checkout-btn">
-                    <button @click="addToCart(userSettings)">PROCEED TO CHECKOUT</button>
+                    <button @click="noCheckout">PROCEED TO CHECKOUT</button>
                 </div>
             </div>
         </div>
@@ -26,14 +26,16 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, computed, watch, useTemplateRef, onMounted, onBeforeUnmount } from 'vue'
 import { userSettingsStore, menuSettingsStore } from '@/stores/store'; 
-import { computed } from 'vue';
 import CartItem from './CartItem.vue';
+import { onClickOutside } from '@vueuse/core'
 
 const cart = userSettingsStore().cart
 const menuSettings = menuSettingsStore()
 const menuHeight = ref(0)
+
+const cartBox = ref(null)
 
 console.log(cart.length)
 // watch(cart, () =>{
@@ -46,6 +48,12 @@ console.log(cart.length)
 //     }
 // });
 
+
+onClickOutside(cartBox, event => menuSettings.isCartOpen = false)
+
+function noCheckout(){
+    alert('Error: Sorry, checkout Page has not been added')
+}
 
 </script>
 
@@ -146,16 +154,16 @@ console.log(cart.length)
                     @include text-Inter(16px, 700);
                     height:60px;
                     width:280px;
-                    background-color: #008019;
+                    background-color: var(--color-buttons);
                     border-radius: 10px;
-                    border:2px solid #008019;
+                    border:2px solid var(--color-buttons);
                     letter-spacing: 1px;
                     color:white;
                     transition: background-color 0.25s, border 0.33s;
                     &:hover{
                         cursor: pointer;
-                        background-color: #005411;
-                        border:8 px solid #008019;
+                        background-color: var(--color-button-active);
+                        border:8 px solid var(--color-buttons);
                     }
                 }
         }

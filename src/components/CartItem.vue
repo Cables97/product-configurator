@@ -7,7 +7,7 @@
         </div>
         
         <div class="c-i-buttons">
-            <button>Edit</button>
+            <button @click="setEditItem(info)">Edit</button>
             <span>|</span>
             <button @click="cartItemRemove(info)">Remove</button>
             <span>|</span>
@@ -44,14 +44,17 @@
 
 <script setup>
     import { userSettingsStore, menuSettingsStore } from '@/stores/store'; 
-    import { ref, computed, watch } from 'vue'
+    import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
     import vSelect from 'vue-select'
     import 'vue-select/dist/vue-select.css';
 
     defineProps(['info'])
 
     const cart = userSettingsStore().cart
+    const userStore = userSettingsStore().userStore
     const detailsEnabled = ref(false)
+
+    const menuSettings = menuSettingsStore()
 
     watch(cart, () =>{
         console.log(cart)
@@ -72,6 +75,14 @@
     });
     }
 
+
+    function setEditItem(info){
+        userStore.candles = info.details.candles
+        userStore.wicks = info.details.wicks
+        userStore.scents = info.details.scents
+        userStore.containers = info.details.containers
+        userStore.waxes = info.details.waxes
+    }
 
 
 
@@ -180,6 +191,10 @@
             background: none;
             border:none;
             color:#aaa;
+            &:hover{
+                cursor: pointer;
+                text-decoration: underline;
+            }
         }
         div{
             display:flex;

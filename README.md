@@ -38,7 +38,7 @@ npm run dev
 
 Almost all info and layout is based on Objects in the Store. 
 
-Adding Sections => All sections are defined by their menu object. To add a section, you simply need to copy one of the menu Objects replace the info with the approproate value. 
+Adding Sections => All sections are defined by their menu object. To add a section, you simply need to copy one of the menu Objects replace the info with the appropriate value. 
 
 ```
 export const menuOptionsStore = defineStore('optionsMenu', () => {
@@ -46,11 +46,11 @@ export const menuOptionsStore = defineStore('optionsMenu', () => {
     candles : {    
       id:"candles",                                                 //id is the same as the object name. This is what controls navigation
       name: "Candles",                                  
-      img: "/images/icons/sizes.svg" ,                              // 48px x 48px for best fit
+      img: "/images/icons/sizes.svg" ,                              // 48px<sup>2<sup for best fit
       options1:{                                                    //Every section can have multiple sub-sections. 
         name: "Candle Style",                                       //Subsection Name
         list:[
-          { id:"small",  name:"Small Candle", icon:"...", cost: 10 },   //These are the difference choices that someone might have in each section. 
+          { id:"small",  name:"Small Candle", icon:"...", cost: 10 },   //These are the different choices that someone might have in each section. 
           { id:"wide", name:"Wide Candle", icon:...", cost: 20,  },
           { id:"tall", name:"Tall Candle", icon:...", cost: 30 },
         ],
