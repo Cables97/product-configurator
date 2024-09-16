@@ -60,6 +60,13 @@
         console.log(cart)
     });
 
+
+    watch(menuSettings, () => {
+    if(menuSettings.isCartOpen == false){
+        detailsEnabled.value = false
+        }
+    })
+
     function showDetails(){
         (detailsEnabled.value) ? detailsEnabled.value = false : detailsEnabled.value = true
     }

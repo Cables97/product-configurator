@@ -38,16 +38,6 @@ const menuHeight = ref(0)
 const cartBox = ref(null)
 
 console.log(cart.length)
-// watch(cart, () =>{
-//     (cart.length >= 1) ? menuHeight.value = (cart.length  * 112) + 100 + 60 + "px" : menuHeight.value = "100px"
-//     document.getElementById("cart-display").style.height = menuHeight.value
-//     if(cart.length >= 1){
-//         document.getElementById("cart-display").style.overflowY = "auto"
-//     }else{
-//         document.getElementById("cart-display").style.overflowY = "hidden"
-//     }
-// });
-
 
 onClickOutside(cartBox, event => menuSettings.isCartOpen = false)
 

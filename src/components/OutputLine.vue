@@ -110,7 +110,6 @@ class CartItem{
     }
 }
 
-
 </script>
 
 <style lang="scss">
